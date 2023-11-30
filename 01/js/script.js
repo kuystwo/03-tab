@@ -4,23 +4,21 @@ $(function () {
   const $tabContent = $('.tab-con-item');
 
   // 초기 세팅
-  $tabAction();
+  tabAction(0);
 
   // 탭메뉴를 클릭했을 때
   $tabMenu.on('click', function () {
     let idx = $(this).index();
-    $tabMenu.eq(idx).addClass('on');
 
-    $tabContent.hide();
-    $tabContent.eq(idx).show();
+    tabAction(idx);
   });
 
   // 중복되는 동작을 함수로 정의
-  function tabAction() {
-    $tabContent.hide();
-    $tabContent.eq(0).show();
-
+  function tabAction(index) {
     $tabMenu.removeClass('on');
-    $tabMenu.eq(0).addClass('on');
+    $tabMenu.eq(index).addClass('on');
+
+    $tabContent.hide();
+    $tabContent.eq(index).show();
   }
 });
